@@ -1,0 +1,19 @@
+{% extends 'shortener/base.html' %}
+{% block Title %}Link{% endblock %}
+{% block Body %}
+    <form action="" method="post" >
+        {% csrf_token %}
+        <fieldset>
+            <legend><h2>Сокращение ссылки</h2></legend>
+            <ul>
+                <span>Введите либо вставьте из буфера обмена полный URL вашей ссылки</span>
+                <br>
+                <p></p>
+                {{ urlentry_form.as_p }}
+                {{ formset.as_p }}
+            </ul>
+        </fieldset>
+        <br>
+        <input type="submit" class="btn btn-danger" value="Сократить">
+    </form>
+{% endblock %}

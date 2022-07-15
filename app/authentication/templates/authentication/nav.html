@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #34ebd2;">
+    <div class="container container-fluid">
+{#        <img src="https://u9.by/uby/U9logob.png" width="222" height="80"></img>#}
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'shortener:index' %}" aria-current="page"><b>Домой</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'auth:login' %}"><b>Авторизация</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%  url 'auth:reset_password' %}"><b>Сброс пароля</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'auth:reg' %}"><b>Регистрация</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

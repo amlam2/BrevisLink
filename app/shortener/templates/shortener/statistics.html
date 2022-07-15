@@ -1,0 +1,38 @@
+{% extends 'shortener/base.html' %}
+{% block Title %}
+    {{ urlentry.url_hash }} Statistics
+{% endblock %}
+{% block Body %}
+    <legend><h2>Статистика переходов по ссылке</h2></legend>
+    {% if urlentry.owner == request.user %}
+        <ul>
+            <h4>
+                <a href="http://{{ request.META.HTTP_HOST }}/{{ urlentry.url_hash }}">
+                    http://{{ request.META.HTTP_HOST }}/{{ urlentry.url_hash }}
+                </a>
+            </h4>
+        </ul>
+        <br>
+        {% if urlentry.leads_set.all %}
+            <legend>
+                {% with total=urlentry.leads_set.all.count %}
+                    {{ total }} click{{ total | pluralize }}
+                {% endwith %}
+            </legend>
+            <ul>
+                {% for leads in urlentry.leads_set.all %}
+                    <li>
+                        <b>Дата и время:</b>&nbsp;{{ leads.clicked_at | date:"j E Y г. в G:i:s.u" }};
+                        <b>&nbsp;Хост:</b>&nbsp;{{ leads.clicked_host }};
+                        <b>&nbsp;IP-адрес:</b>&nbsp;{{ leads.clicked_ip }};
+                        <br>
+                        <b>Устройство пользователя:</b>&nbsp;{{ leads.clicked_conf }}{{ leads.clicked_conf | pluralize }}
+                    </li>
+                {% endfor %}
+                <br>
+            </ul>
+        {% else %}
+            <p>Нет переходов по этой ссылке</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,48 @@
+{% load static %}
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #34ebd2;">
+    <div class="container container-fluid">
+{#        <img src="https://u9.by/uby/U9logob.png" width="222" height="80"></img>#}
+        <img src="{% static 'images/U9logob.png' %}" style="width:222px; height:80px;"  align="absmiddle">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'shortener:index' %}" aria-current="page">
+                        <b>Домой</b> <!-- List -->
+                    </a>
+                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'auth:profile' request.user.profile.id %}">
+                            <b>Профиль пользователя [{{ user.username }}]</b> <!-- Profile -->
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'auth:logout' %}">
+                            <b>Выход</b> <!-- Logout -->
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'auth:login' %}">
+                            <b>Авторизация</b>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%  url 'auth:reset_password' %}">
+                            <b>Сброс пароля</b>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'auth:reg' %}">
+                            <b>Регистрация</b>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

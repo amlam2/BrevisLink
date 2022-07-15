@@ -1,0 +1,59 @@
+{% extends 'shortener/base.html' %}
+{% block Title %}
+    {{ urlentry.url_hash }} Detail
+{% endblock %}
+{% block Body %}
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <legend><h2>Подробнее о короткой ссылке</h2></legend>
+    {% if urlentry.owner == request.user %}
+        <ul>
+            <h4>
+                <a href="http://{{ request.META.HTTP_HOST }}/{{ urlentry.url_hash }}">
+                    http://{{ request.META.HTTP_HOST }}/{{ urlentry.url_hash }}
+                </a>
+            </h4>
+            <button type="button" onclick="location.href='{% url 'shortener:statistics' urlentry.id %}'" class="btn btn-secondary btn-sm">
+                Статистика переходов по ссылке
+            </button>
+        </ul>
+        {% if form.errors %}
+            <p style="color: orangered">Есть ошибки! {{ form.errors }}</p>
+        {% endif %}
+        {% for message in messages %}
+            <p style="color: turquoise">{{ message }}</p>
+        {% endfor %}
+        <legend></legend>
+        <ul>
+            <table>
+                <tr height="25">
+                    <td align="right">
+                        <strong>Владелец</strong>
+                    </td>
+                    <td><strong>&nbsp;:&nbsp;</strong></td>
+                    <td>{{ urlentry.owner }}</td>
+                </tr>
+                <tr height="25">
+                    <td align="right">
+                        <strong>Дата создания</strong>
+                    </td>
+                    <td><strong>&nbsp;:&nbsp;</strong></td>
+                    <td>{{ urlentry.created_at | date:"j E Y г." }}</td>
+                </tr>
+                <tr height="25">
+                    <td align="right">
+                        <strong>Время создания</strong>
+                    </td>
+                    <td><strong>&nbsp;:&nbsp;</strong></td>
+                    <td>{{ urlentry.created_at | date:"G:i:s.u" }}</td>
+                </tr>
+                <tr height="25">
+                    <td align="right">
+                        <strong>Оригинальный URL</strong>
+                    </td>
+                    <td><strong>&nbsp;:&nbsp;</strong></td>
+                    <td><a href="{{ urlentry.full_url }}">{{ urlentry.full_url }}</a></td>
+                </tr>
+            </table>
+        </ul>
+    {% endif %}
+{% endblock %}

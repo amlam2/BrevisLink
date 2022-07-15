@@ -1,0 +1,52 @@
+{% extends 'authentication/base.html' %}
+{% block Title %}
+    Registration
+{% endblock %}
+{% block Body %}
+    <form method="post" action="">
+        <fieldset>
+            <legend><h2>Регистрация</h2></legend>
+            <ul>
+                {% csrf_token %}
+                {% if form.errors %}
+                    <p style="color: orangered">Есть ошибки! {{ form.errors }}</p>
+                {% endif %}
+                {% for message in messages %}
+                    <p style="color: turquoise">{{ message }}</p>
+                {% endfor %}
+                <table>
+                    <tr height="30">
+                        <td align="right">
+                            <label>{{ form.username.label }}</label>
+                        </td>
+                        <td><strong>&nbsp;:&nbsp;</strong></td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr height="30">
+                        <td align="right">
+                            <label>{{ form.email.label }}</label>
+                        </td>
+                        <td><strong>&nbsp;:&nbsp;</strong></td>
+                        <td>{{ form.email }}</td>
+                    </tr>
+                    <tr height="30">
+                        <td align="right">
+                            <label>{{ form.password1.label }}</label>
+                        </td>
+                        <td><strong>&nbsp;:&nbsp;</strong></td>
+                        <td>{{ form.password1 }}</td>
+                    </tr>
+                    <tr height="30">
+                        <td align="right">
+                            <label>{{ form.password2.label }}</label>
+                        </td>
+                        <td><strong>&nbsp;:&nbsp;</strong></td>
+                        <td>{{ form.password2 }}</td>
+                    </tr>
+                </table>
+            </ul>
+        </fieldset>
+        <br>
+        <input type="submit" class="btn btn-warning" value="Зарегистрировать">
+    </form>
+{% endblock %}

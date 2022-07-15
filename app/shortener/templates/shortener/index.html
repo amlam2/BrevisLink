@@ -1,0 +1,42 @@
+{% extends 'shortener/base.html' %}
+{% block Title %}
+    Links List
+{% endblock %}
+{% block Body %}
+        <style>
+            .colortext {
+                color: red;
+            }
+        </style>
+    {% if request.user.is_authenticated %}
+        {% if links_list %}
+            <legend><h2>Список сокращённых ссылок пользователя {{ request.user }}</h2></legend>
+            <ul>
+                <table>
+                    <thead><th>Ссылка</th><th>&nbsp;&nbsp;</th><th>Создана</th></thead>
+                    {% for links in links_list %}
+                        {% if links.owner == request.user %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'shortener:detail' links.id %}">
+                                            http://{{ request.META.HTTP_HOST }}/{{ links.url_hash }}
+                                        </a>
+                                    </td>
+                                    <td><strong>&nbsp;&nbsp;</strong></td>
+                                    <td>
+                                        {{ links.created_at | date:"j E Y г. в G:i:s.u" }}
+                                    </td>
+                                </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </ul>
+        {% else %}
+            <p>Нет доступных ссылок.</p>
+        {% endif %}
+        <br>
+        <a href="{% url 'shortener:new' %}"  type="button" class="btn btn-danger">
+            Добавить сокращённую ссылку
+        </a>
+    {% endif %}
+{% endblock %}

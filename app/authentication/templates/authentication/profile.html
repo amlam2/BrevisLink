@@ -1,0 +1,25 @@
+{% extends 'shortener/base.html' %}
+{% block Title %}
+    User Profile
+{% endblock %}
+{% block Body %}
+    <legend><h2>Профиль пользователя</h2></legend>
+    <ul>
+        <table>
+            <tr height="25">
+                <td align="right">
+                    <strong>Имя пользователя</strong>
+                </td>
+                <td><strong>&nbsp;:&nbsp;</strong></td>
+                <td>{{ profile.user.username }}</td>
+            </tr>
+            <tr height="25">
+                <td align="right">
+                    <strong>Адрес электронной почты</strong>
+                </td>
+                <td><strong>&nbsp;:&nbsp;</strong></td>
+                <td>{{ profile.user.email }}</td>
+            </tr>
+        </table>
+    </ul>
+{% endblock %}
