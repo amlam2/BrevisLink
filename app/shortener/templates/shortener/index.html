@@ -9,8 +9,8 @@
             }
         </style>
     {% if request.user.is_authenticated %}
+        <legend><h2>Список сокращённых ссылок пользователя {{ request.user }}</h2></legend>
         {% if links_list %}
-            <legend><h2>Список сокращённых ссылок пользователя {{ request.user }}</h2></legend>
             <ul>
                 <table>
                     <thead><th>Ссылка</th><th>&nbsp;&nbsp;</th><th>Создана</th></thead>
@@ -32,7 +32,9 @@
                 </table>
             </ul>
         {% else %}
-            <p>Нет доступных ссылок.</p>
+            <ul>
+                <p>У вас ещё нет сокращённых ссылок</p>
+            </ul>
         {% endif %}
         <br>
         <a href="{% url 'shortener:new' %}"  type="button" class="btn btn-danger">
