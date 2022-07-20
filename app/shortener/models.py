@@ -31,6 +31,7 @@ class Urlentry(models.Model):
     class Meta:
         verbose_name_plural = "Ссылки"
 
+
 class Leads(models.Model):
     urlentry = models.ForeignKey(Urlentry, verbose_name='Короткая ссылка', on_delete=models.CASCADE)
     clicked_at = models.DateTimeField('Дата и время перехода по ссылке', auto_now_add=True)

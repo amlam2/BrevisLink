@@ -1,6 +1,6 @@
 {% extends 'shortener/base.html' %}
 {% block Title %}
-    {{ urlentry.url_hash }} Detail
+    Сервис сокращения длинных ссылок: подробнее о короткой ссылке http://{{ request.META.HTTP_HOST }}/{{ urlentry.url_hash }}
 {% endblock %}
 {% block Body %}
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>

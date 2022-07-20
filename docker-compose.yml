@@ -25,8 +25,8 @@ services:
     environment:
       - DEBUG=1
       - ALLOWED_HOSTS=localhost
-      - EMAIL_HOST_USER=grodnopythonclassdemo@gmail.com
-      - EMAIL_HOST_PASSWORD=faqcY5-taqses-gofcib
+      - EMAIL_HOST_USER=brevislink.robot@gmail.com
+      - EMAIL_HOST_PASSWORD=dapxcbimuyjuhyqt
       - DB_NAME=shortener
       - DB_USER=django
       - DB_PASSWORD=s@sfje+4ydz4ac%p^q$o9+7!lavg+u-kcf#r)&-9yre%ped5b

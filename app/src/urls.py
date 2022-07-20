@@ -1,7 +1,7 @@
 """src URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.0/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -22,10 +22,11 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('shortener.urls')),
-    path('reset/<uidb64>/<token>/', view=auth_views.PasswordResetConfirmView.as_view(template_name='authentication/reset_password_done.html'), name='password_reset_confirm'),
-    path('reset_password_sent/', view=auth_views.PasswordResetDoneView.as_view(template_name='authentication/reset_password_sent.html'), name='password_reset_done'),
-    path('reset_password_complete/', view=auth_views.PasswordResetCompleteView.as_view(template_name='authentication/reset_password_complete.html'), name='password_reset_complete'),
     path('auth/', include('authentication.urls')),
+    path('auth/reset/<uidb64>/<token>/', view=auth_views.PasswordResetConfirmView.as_view(template_name='authentication/reset_password_done.html'), name='password_reset_confirm'),
+    path('auth/reset_password_sent/', view=auth_views.PasswordResetDoneView.as_view(template_name='authentication/reset_password_sent.html'), name='password_reset_done'),
+    path('auth/reset_password_complete/', view=auth_views.PasswordResetCompleteView.as_view(template_name='authentication/reset_password_complete.html'), name='password_reset_complete'),
+    # path('auth/', include('authentication.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

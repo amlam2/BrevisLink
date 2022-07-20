@@ -1,5 +1,7 @@
 {% extends 'shortener/base.html' %}
-{% block Title %}Link{% endblock %}
+{% block Title %}
+    Сервис сокращения длинных ссылок: сокращение ссылки
+{% endblock %}
 {% block Body %}
     <form action="" method="post" >
         {% csrf_token %}

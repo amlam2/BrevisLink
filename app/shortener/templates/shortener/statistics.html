@@ -1,6 +1,6 @@
 {% extends 'shortener/base.html' %}
 {% block Title %}
-    {{ urlentry.url_hash }} Statistics
+    Сервис сокращения длинных ссылок: статистика переходов по ссылке http://{{ request.META.HTTP_HOST }}/{{ urlentry.url_hash }}
 {% endblock %}
 {% block Body %}
     <legend><h2>Статистика переходов по ссылке</h2></legend>

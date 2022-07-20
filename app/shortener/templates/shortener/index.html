@@ -1,6 +1,6 @@
 {% extends 'shortener/base.html' %}
 {% block Title %}
-    Links List
+    Сервис сокращения длинных ссылок: список сокращённых ссылок пользователя {{ request.user }}
 {% endblock %}
 {% block Body %}
         <style>
@@ -40,5 +40,10 @@
         <a href="{% url 'shortener:new' %}"  type="button" class="btn btn-danger">
             Добавить сокращённую ссылку
         </a>
+    {% else %}
+        <legend><h2>Незарегистрированный пользователь</h2></legend>
+        <ul>
+            <span>Пожалуйста, войдите в свою учётную запись либо зарегистрируйтесь!</span>
+        </ul>
     {% endif %}
 {% endblock %}
