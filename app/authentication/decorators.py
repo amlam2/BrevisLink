@@ -23,9 +23,9 @@ def allowed_users(allowed_roles=[]):   #sets allowed roles of users to see a spe
         return wrapper_func
     return decorator
 
-def staff_only(view_func):  #allows is_staff users to access the view
-    def wraper_func(request, *args, **kwargs):
-        if request.user.is_staff:
-            return view_func(request, *args, **kwargs)
-        return HttpResponse('You are not allowed to see this page!')
-    return wraper_func
+# def staff_only(view_func):  #allows is_staff users to access the view
+#     def wraper_func(request, *args, **kwargs):
+#         if request.user.is_staff:
+#             return view_func(request, *args, **kwargs)
+#         return HttpResponse('You are not allowed to see this page!')
+#     return wraper_func

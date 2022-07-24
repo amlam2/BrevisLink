@@ -1,7 +1,11 @@
 .DS_Store
 .ipynb_checkpoints
 .idea
-demo/db.sqlite3
+app/db.sqlite3
+app/shortener/migrations
+app/shortener/__pycache__
+app/authentication/migrations
+app/authentication/__pycache__
 Pipfile.lock
 __pycache__
 .env

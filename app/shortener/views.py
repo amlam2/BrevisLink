@@ -47,9 +47,9 @@ def create_urls(request):
         urlentry_form = UrlentryForm(hide_condition=True)
         formset = urlentry_formset()
         return render(request, 'shortener/new_link.html',{
-        'urlentry_form': urlentry_form,
-        'formset': formset
-        })
+                                                            'urlentry_form': urlentry_form,
+                                                            'formset': formset
+                                                         })
 
 
 def add_lead_and_redirect(request, hash):
