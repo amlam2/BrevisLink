@@ -5,8 +5,8 @@ services:
     image: postgres:14.2-alpine
     environment:
       - POSTGRES_USER=django
-      - POSTGRES_PASSWORD=(9g_65x**tzds^oyw+zf_(t!p112cop0k(b8c#tgxj%ok06sp
-      - POSTGRES_DB=demo
+      - POSTGRES_PASSWORD=s@sfje+4ydz4ac%p^q$o9+7!lavg+u-kcf#r)&-9yre%ped5b
+      - POSTGRES_DB=shortener
       - POSTGRES_HOST=db
       - POSTGRES_PORT=5432
     expose:
@@ -19,13 +19,13 @@ services:
     volumes:
       - static_data:/vol/web
     environment:
-      - SECRET_KEY=django-insecure-=(9g_65x**tzds^oyw+zf_(t!p112cop0k(b8c#tgxj%ok06sp
+      - SECRET_KEY=django-insecure-s@sfje+4ydz4ac%p^q$o9+7!lavg+u-kcf#r)&-9yre%ped5b=
       - ALLOWED_HOSTS=127.0.0.1,localhost
-      - EMAIL_HOST_USER=grodnopythonclassdemo@gmail.com
-      - EMAIL_HOST_PASSWORD=faqcY5-taqses-gofcib
-      - DB_NAME=demo
+      - EMAIL_HOST_USER=brevislink.robot@gmail.com
+      - EMAIL_HOST_PASSWORD=dapxcbimuyjuhyqt
+      - DB_NAME=shortener
       - DB_USER=django
-      - DB_PASSWORD=(9g_65x**tzds^oyw+zf_(t!p112cop0k(b8c#tgxj%ok06sp
+      - DB_PASSWORD=s@sfje+4ydz4ac%p^q$o9+7!lavg+u-kcf#r)&-9yre%ped5b
       - DB_HOST=db
       - DB_PORT=5432
     depends_on:

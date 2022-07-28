@@ -1,6 +1,8 @@
 from django.forms import ModelForm
 from django.forms.widgets import HiddenInput
+
 from .models import Urlentry, Leads
+
 
 class UrlentryForm(ModelForm):
     class Meta:

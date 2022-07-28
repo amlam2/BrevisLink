@@ -1,15 +1,18 @@
-from django.shortcuts import render, redirect
-from .forms import CreateUserForm
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from .decorators import unauthenticated_user
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
+from django.contrib.auth import logout
+from django.contrib import messages
+from django.shortcuts import redirect
+from django.shortcuts import render
+
+from .decorators import unauthenticated_user
+from .forms import CreateUserForm
 from .models import Profile
 
 
 @login_required(login_url='auth:login')
-# @allowed_users(allowed_roles=['customer', 'admin'])
-def profile_page(request, pk):  #shows profile details
+def profile_page(request, pk):  # Показать детали профиля
     profile = Profile.objects.get(pk=pk)
     return render(request, 'authentication/profile.html', context={
         'profile': Profile.objects.get(pk=pk),

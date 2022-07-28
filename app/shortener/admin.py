@@ -1,5 +1,7 @@
 from django.contrib import admin
+
 from .models import Urlentry, Leads
+
 
 # Register your models here.
 @admin.register(Urlentry)
@@ -10,6 +12,7 @@ class UrlentryAdmin(admin.ModelAdmin):
     list_per_page = 15
     date_hierarchy = 'created_at'
     ordering = ['url_hash']
+
 
 @admin.register(Leads)
 class LeadsAdmin(admin.ModelAdmin):

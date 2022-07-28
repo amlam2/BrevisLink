@@ -3,11 +3,6 @@
     Сервис сокращения длинных ссылок: список сокращённых ссылок пользователя {{ request.user }}
 {% endblock %}
 {% block Body %}
-        <style>
-            .colortext {
-                color: red;
-            }
-        </style>
     {% if request.user.is_authenticated %}
         <legend><h2>Список сокращённых ссылок пользователя {{ request.user }}</h2></legend>
         {% if links_list %}

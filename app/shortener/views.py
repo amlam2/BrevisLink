@@ -1,12 +1,17 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy
-from django.views import generic
-from .models import Urlentry, Leads
-from django.utils import timezone
-from .forms import UrlentryForm
 from django.contrib.auth.decorators import login_required
 from django.forms.models import inlineformset_factory
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
+from django.utils import timezone
+from django.views import generic
+
+from .forms import UrlentryForm
+from .models import Urlentry
+from .models import Leads
 
 
 class IndexView(generic.ListView):
@@ -23,11 +28,9 @@ class DetailView(generic.DetailView):
 
 class StatisticsView(generic.DetailView):
     model = Urlentry
-    # queryset = Leads.objects.filter(clicked_at__lte=timezone.now()).order_by('-clicked_at')
     template_name = 'shortener/statistics.html'
 
 
-# create Url
 @login_required(login_url=reverse_lazy('auth:login'))
 def create_urls(request):
     urlentry_formset = inlineformset_factory(Urlentry, Leads, fields=['clicked_host'], extra=0)
@@ -43,6 +46,8 @@ def create_urls(request):
             if formset.is_valid():
                 formset.save()
                 return redirect('shortener:detail', pk=urlentry.pk)
+        else:
+            return HttpResponse('This link already exists.')
     else:
         urlentry_form = UrlentryForm(hide_condition=True)
         formset = urlentry_formset()
