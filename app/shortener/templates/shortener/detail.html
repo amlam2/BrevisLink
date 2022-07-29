@@ -8,8 +8,8 @@
     {% if urlentry.owner == request.user %}
         <ul>
             <h4>
-                <a href="http://{{ request.META.HTTP_HOST }}/{{ urlentry.url_hash }}">
-                    http://{{ request.META.HTTP_HOST }}/{{ urlentry.url_hash }}
+                <a href="{{ request.scheme }}://{{ request.META.HTTP_HOST }}/{{ urlentry.url_hash }}">
+                    {{ request.scheme }}://{{ request.META.HTTP_HOST }}/{{ urlentry.url_hash }}
                 </a>
             </h4>
             <button type="button" onclick="location.href='{% url 'shortener:statistics' urlentry.id %}'" class="btn btn-secondary btn-sm">

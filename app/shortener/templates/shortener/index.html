@@ -14,7 +14,7 @@
                                 <tr>
                                     <td>
                                         <a href="{% url 'shortener:detail' links.id %}">
-                                            http://{{ request.META.HTTP_HOST }}/{{ links.url_hash }}
+                                            {{ request.scheme }}://{{ request.META.HTTP_HOST }}/{{ links.url_hash }}
                                         </a>
                                     </td>
                                     <td><strong>&nbsp;&nbsp;</strong></td>
